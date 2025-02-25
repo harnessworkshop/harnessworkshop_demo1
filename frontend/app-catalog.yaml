@@ -1,24 +1,23 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-name: harnessworkshop_demo1_ns_2_frontend
-description: harnessworkshop_demo1_desc
-2
-annotations:
-backstage.io/techdocs-ref: dir:.
-github.com/project-slug:
-harnessworkshop/harnessworkshop_demo1
-#harness.io/pipelines: |
-# build and deploy: TBD
-tags:
-- harnessworkshop_demo1_ns_2
+  name: spradyumn_frontend
+  description: my final test
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: harnessworkshop/harnessworkshop_demo1
+    #harness.io/pipelines: |
+    #  build and deploy: TBD
+  tags:
+    - spradyumn
+    - frontend
 spec:
-type: service
-owner: domesapandian_pannerselvam1@newyorklife.com
-lifecycle: experimental
-consumesApis:
-- spotify
-providesApis:
-- petstore
-# dependsOn:
-# - component:default/yournamehere_db
+  type: service
+  owner: saipradyumn_shrivastava@newyorklife.com
+  lifecycle: experimental
+  consumesApis:
+    - spotify
+  providesApis:
+    - petstore
+  dependsOn:
+    - component:default/spradyumn_backend
