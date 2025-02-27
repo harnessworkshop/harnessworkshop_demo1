@@ -1,22 +1,22 @@
 apiVersion: scaffolder.backstage.io/v1beta3
-kind: <KIND>
+kind: Template
 metadata:
-  name: <YOUR_NAMESPACE>_Three_Tier_Web_App_Blueprint
-  title: <YOUR_NAMESPACE> Three Tier Web App Blueprint
-  description: <DESCRIPTION>
+  name: spradyumn_Three_Tier_Web_App_Blueprint
+  title: spradyumn Three Tier Web App Blueprint
+  description: this is our new blueprint for 3-tier app.
   tags:
     - react
     - node.js
-    - <ADD TAG>
-    - <ADD TAG>
-    - <ADD TAG>
+    - eks
+    - kubernetes
+    - db
 spec:
-  owner: <ADD_OWNER>
+  owner: saipradyumn_shrivastava@newyorklife.com
   type: service
   parameters:
     - title: Service Details
       required:
-        - <ADD_NAMESPACE_PROPERTY_HERE>
+        - namespace
         - github_repo_name
         - github_repo_description
         - github_repo_owner
@@ -25,7 +25,14 @@ spec:
         - db_name
         - db_type
       properties:
-        namespace: <ADD_NAMESPACE_PROPERTY_HERE>
+        namespace: 
+          title: Namespace
+          type: string
+          description: Should be first initial + last name like "hsaab"
+          pattern: "^[a-z]+$"
+          maxLength: 10
+          ui:autofocus: true
+          ui:help: "Hint: Lowercase letters only"
         github_repo_name:
           title: Github Repo Name
           type: string
@@ -100,7 +107,7 @@ spec:
       input:
         url: https://app.harness.io/ng/account/IFG41DWvSnaRLOVNB2uesg/module/cd/orgs/training/projects/Viper/pipelines/three_tier_app_onboarding/pipeline-studio?storeType=INLINE
         inputset:
-          namespace: <ADD_PARAMETER>
+          namespace: ${{ parameters.namespace }}
           github_repo_name: ${{ parameters.github_repo_name }}
           github_repo_description: ${{ parameters.github_repo_description }}
           github_repo_owner: ${{ parameters.github_repo_owner }}
